@@ -1,13 +1,5 @@
+# Implementação descentralizada onde cada modelo avalia os resumos gerados pelos outros.
 def avaliar_resumos_descentralizado(resumos):
-    """
-    Implementação descentralizada onde cada modelo avalia os resumos gerados pelos outros.
-
-    Args:
-        resumos (list): Lista de resumos gerados.
-
-    Returns:
-        str: O melhor resumo escolhido pelo processo descentralizado.
-    """
     votos = {}
     for i, resumo_avaliado in enumerate(resumos):
         votos[i] = 0

@@ -4,16 +4,8 @@ from configuracoes import TAMANHO_MAX_CHUNK
 
 nltk.download('punkt')
 
+# Divide o texto em trechos menores para evitar estourar o limite do modelo.
 def dividir_texto(texto):
-    """
-    Divide o texto em trechos menores para evitar estourar o limite do modelo.
-
-    Args:
-        texto (str): Texto completo de entrada.
-
-    Returns:
-        list: Lista de trechos do texto original.
-    """
     frases = sent_tokenize(texto)
     trechos = []
     trecho_atual = ""

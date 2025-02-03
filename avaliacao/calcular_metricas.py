@@ -1,16 +1,7 @@
 from evaluate import load
 
+# Calcula as métricas ROUGE e BLEU comparando o resumo gerado com o de referência.
 def calcular_metricas(referencia, gerado):
-    """
-    Calcula as métricas ROUGE e BLEU comparando o resumo gerado com o de referência.
-
-    Args:
-        referencia (str): Texto de referência para avaliação.
-        gerado (str): Resumo gerado pelo modelo.
-
-    Returns:
-        dict: Dicionário com os resultados de ROUGE e BLEU.
-    """
     rouge = load("rouge")
     bleu = load("bleu")
 

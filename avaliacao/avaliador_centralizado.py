@@ -1,11 +1,8 @@
 from transformers import pipeline
 from modelos.carregar_modelos import carregar_modelo
 
-
+# Avalia os resumos gerados e escolhe o melhor com base na concisão e precisão.
 def avaliar_resumos(resumos):
-    """
-    Avalia os resumos gerados e escolhe o melhor com base na concisão e precisão.
-    """
     modelo, tokenizador = carregar_modelo("llama")
     pipeline_avaliacao = pipeline("text-generation", model=modelo, tokenizer=tokenizador)
 

@@ -2,18 +2,8 @@ from transformers import pipeline
 from modelos.carregar_modelos import carregar_modelo
 from sumarizacao.processamento_texto import dividir_texto
 
-
+# Gera um resumo usando o modelo especificado.
 def gerar_resumo(texto, nome_modelo):
-    """
-    Gera um resumo usando o modelo especificado.
-
-    Args:
-        texto (str): Texto a ser resumido.
-        nome_modelo (str): Nome do modelo (ex: "llama", "gemma").
-
-    Returns:
-        str: Resumo gerado pelo modelo.
-    """
     print(f"🔹 Carregando modelo local: {nome_modelo}")
     modelo, tokenizador = carregar_modelo(nome_modelo)
 

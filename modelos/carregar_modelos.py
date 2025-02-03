@@ -2,10 +2,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from configuracoes import MODEL_NAMES
 
+# Carrega o modelo e o tokenizador a partir de um diretório local.
 def carregar_modelo(nome_modelo):
-    """
-    Carrega o modelo e o tokenizador a partir de um diretório local.
-    """
     print(f"-> Carregando modelo local: {nome_modelo}")
 
     tokenizador = AutoTokenizer.from_pretrained(MODEL_NAMES[nome_modelo], local_files_only=True)
