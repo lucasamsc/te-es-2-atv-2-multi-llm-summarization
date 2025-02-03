@@ -1,0 +1,21 @@
+{
+    "rouge": {
+        "rouge1": 0.019999999999999997,
+        "rouge2": 0.0,
+        "rougeL": 0.019999999999999997,
+        "rougeLsum": 0.019999999999999997
+    },
+    "bleu": {
+        "bleu": 0.0,
+        "precisions": [
+            0.009523809523809525,
+            0.0,
+            0.0,
+            0.0
+        ],
+        "brevity_penalty": 1.0,
+        "length_ratio": 42.0,
+        "translation_length": 210,
+        "reference_length": 5
+    }
+}
