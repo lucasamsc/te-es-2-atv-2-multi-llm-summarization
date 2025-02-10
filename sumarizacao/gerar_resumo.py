@@ -1,30 +1,17 @@
 from transformers import pipeline
 from modelos.carregar_modelos import carregar_modelo
-from sumarizacao.processamento_texto import dividir_texto
 
-def gerar_resumo(texto, nome_modelo):
+def gerar_resumo(texto, nome_modelo, rounds=2):
     """
-    Gera um resumo usando o modelo especificado.
-
-    Args:
-        texto (str): Texto a ser resumido.
-        nome_modelo (str): Nome do modelo (ex: "bart", "t5", "pegasus").
-
-    Returns:
-        str: Resumo gerado pelo modelo.
+    Gera um resumo para um determinado texto utilizando múltiplos rounds de refinamento.
     """
-    print(f"Carregando modelo local: {nome_modelo}")
     modelo, tokenizador = carregar_modelo(nome_modelo)
+    sumarizador = pipeline("summarization", model=modelo, tokenizer=tokenizador)
 
-    pipeline_resumo = pipeline("summarization", model=modelo, tokenizer=tokenizador)
+    resumo_atual = texto  # Começa com o texto original
 
-    trechos = dividir_texto(texto)
+    for _ in range(rounds):
+        resumo_gerado = sumarizador(resumo_atual, max_length=150, min_length=50, do_sample=False)[0]["summary_text"]
+        resumo_atual = resumo_gerado  # Atualiza o resumo para a próxima iteração
 
-    resumo = pipeline_resumo(
-        trechos,
-        min_length=20,
-        max_length=150,
-        truncation=True
-    )
-
-    return " ".join([r["summary_text"] for r in resumo])
+    return resumo_atual

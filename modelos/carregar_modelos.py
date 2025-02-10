@@ -20,7 +20,7 @@ def carregar_modelo(nome_modelo):
         tuple: (modelo, tokenizador) carregados do Hugging Face Transformers.
     """
     if nome_modelo not in MODEL_NAMES:
-        raise ValueError(f"❌ Erro: O modelo '{nome_modelo}' não está definido em MODEL_NAMES!")
+        raise ValueError(f"Erro: O modelo '{nome_modelo}' não está definido em MODEL_NAMES!")
 
     caminho_modelo = MODEL_NAMES[nome_modelo]
 

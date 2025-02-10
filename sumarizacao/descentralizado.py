@@ -1,11 +1,12 @@
-# Implementação descentralizada onde cada modelo avalia os resumos gerados pelos outros.
+import random
+# Avaliação descentralizada dos resumos: cada modelo vota no melhor resumo.
 def avaliar_resumos_descentralizado(resumos):
-    votos = {}
-    for i, resumo_avaliado in enumerate(resumos):
-        votos[i] = 0
-        for j, avaliador in enumerate(resumos):
-            if i != j:
-                votos[i] += 1 if len(resumo_avaliado) < len(avaliador) else 0
+    votos = {i: 0 for i in range(len(resumos))}  # Inicializa contagem de votos
 
-    melhor_resumo = max(votos, key=votos.get)
-    return resumos[melhor_resumo]
+    for _ in range(3):  # Simula 3 modelos participando da avaliação
+        melhor_resumo_idx = random.randint(0, len(resumos) - 1)  # Escolha aleatória simulando avaliação
+        votos[melhor_resumo_idx] += 1
+
+    melhor_resumo = resumos[max(votos, key=votos.get)]  # Pega o mais votado
+
+    return melhor_resumo
